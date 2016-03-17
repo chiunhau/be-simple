@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "A better simple way to access the Behance API, in Javascript",
   "main": "beSimple.js",
-  "scripts": {
-   
-  },
+  "scripts": {},
   "keywords": [
     "behance"
   ],
   "author": "chiunhau you",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^2.2.1"
+  }
 }
