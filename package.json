@@ -1,8 +1,8 @@
 {
-  "name": "behance.js",
+  "name": "beSimple.js",
   "version": "1.0.0",
-  "description": "A better simple way to get access of Behance Javascript API",
-  "main": "behance.js",
+  "description": "A better simple way to access the Behance API, in Javascript",
+  "main": "beSimple.js",
   "scripts": {
    
   },
@@ -10,5 +10,5 @@
     "behance"
   ],
   "author": "chiunhau you",
-  "license": "ISC"
+  "license": "MIT"
 }
