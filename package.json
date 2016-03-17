@@ -1,8 +1,8 @@
 {
   "name": "behance.js",
   "version": "1.0.0",
-  "description": "behance,js",
-  "main": "index.js",
+  "description": "A better simple way to get access of Behance Javascript API",
+  "main": "behance.js",
   "scripts": {
    
   },
