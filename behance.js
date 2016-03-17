@@ -26,6 +26,41 @@ Be.prototype = {
 			this._get(suffix_url, params, cb);
 		}
 	},
+	userFollowers: function(user, params, cb) {
+		if (typeof user === 'string' && typeof params === 'object' && typeof cb ==='function') {
+			var suffix_url = 'users/' + user + '/followers';
+			this._get(suffix_url, params, cb);
+		}
+	},
+	userAllFollowers: function(user, cb) {
+		if (typeof user === 'string' && typeof cb ==='function') {
+			var suffix_url = 'users/' + user + '/followers';
+			var combined_followers = [];
+			var page = 1;
+			var shouldContinue = true;
+			
+			while(shouldContinue) {
+				this._get(suffix_url, {per_page: 20, page: page}, function(data) {
+					combined_followers.push(data.followers);
+					page += 1;
+
+					if (data.length === 0 || data.length < 20) {
+						shouldContinue = false;
+					}
+				});
+			}
+			
+
+			cb();
+		}
+	}
+	userStats: function(user, params, cb) {
+		if (typeof user === 'string' && typeof params === 'object' && typeof cb ==='function') {
+			var suffix_url = 'users/' + user + '/stats';
+
+			this._get(suffix_url, params, cb);
+		}
+	}
 	_get: function(suffix_url, params, cb) {
 		params.client_id = this.client_id;
 		var url = this.base_url + suffix_url + paramsBuilder(params);
