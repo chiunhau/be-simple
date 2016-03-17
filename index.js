@@ -20,6 +20,12 @@ Be.prototype = {
 			this._get(suffix_url, params, cb);
 		}
 	},
+	userAppreciations: function(user, params, cb) {
+		if (typeof user === 'string' && typeof params === 'object' && typeof cb ==='function') {
+			var suffix_url = 'users/' + user + '/appreciations';
+			this._get(suffix_url, params, cb);
+		}
+	},
 	_get: function(suffix_url, params, cb) {
 		params.client_id = this.client_id;
 		var url = this.base_url + suffix_url + paramsBuilder(params);
