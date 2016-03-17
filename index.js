@@ -1,38 +1,50 @@
 var $ = require('jquery');
 
-var Be = function(clientId) {
-	this.clientId = clientId;
-	this.baseURL = 'http://www.behance.net/v2/';
-	this.get = function(methodURL, params, success) {
-		var completeURL = this.baseURL + methodURL + 'client_id=' + this.clientId;
-		// $.ajax({
-		// 	url: completeURL,
-		// 	datatype: "jsonp",
-		// 	success: success
-		// });
-		console.log(completeURL);
-	}
+var Be = function(client_id) {
+	this.client_id = client_id;
+	this.base_url = 'http://www.behance.net/v2/';
+}
 
-	this.users = {
-		methodBaseURL: 'users/',
-		get: this.get,
-		user: function(user_id, cb) {
-			var methodURL = this.methodBaseURL + user_id + '?';
-			this.get(methodURL, {}, cb);
-		},
-		showThis: function() {
-			console.log(this);
+Be.prototype = {
+	user: function(user, cb) {
+		// if get both params, call /v2/users/user
+		var suffix_url = 'users/';
+		if (typeof user === 'string' && typeof cb ==='function') {
+			suffix_url += user;
+			this._get(suffix_url, {}, cb);
 		}
-	}.bind(this);
+	},
+	userProjects: function(user, params, cb) {
+		if (typeof user === 'string' && typeof params === 'object' && typeof cb ==='function') {
+			var suffix_url = 'users/' + user + '/projects';
+			this._get(suffix_url, params, cb);
+		}
+	},
+	_get: function(suffix_url, params, cb) {
+		params.client_id = this.client_id;
+		var url = this.base_url + suffix_url + paramsBuilder(params);
+		console.log(url);
+		$.ajax({
+			url: url,
+			dataType: 'jsonp',
+			success: cb
+		});
+	}
 }
 
-Be.prototype.hello = function() {
-	console.log("hello");
-}
-Be.prototype.showClientId = function() {
-	console.log(this.clientId);
+
+
+function paramsBuilder(params) {
+	var str = '?';
+	for (var key in params) {
+		if (params.hasOwnProperty(key)) {
+			str = str.concat(key).concat('=').concat(params[key]).concat('&');
+		}
+	}
+	
+	return str
 }
 
-Be
+
 
 module.exports = Be;
