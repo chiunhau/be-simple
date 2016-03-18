@@ -38,20 +38,21 @@ Be.prototype = {
 			var combined_followers = [];
 			var page = 1;
 			var shouldContinue = true;
+			var that = this;
 			
-			while(shouldContinue) {
-				this._get(suffix_url, {per_page: 20, page: page}, function(data) {
-					combined_followers.push(data.followers);
-					page += 1;
-
-					if (data.length === 0 || data.length < 20) {
-						shouldContinue = false;
+			function r() {	
+				that._get(suffix_url, {per_page: 20, page: page}, function(data) {
+					combined_followers = combined_followers.concat(data.followers);
+					if (data.followers.length !== 0 && data.followers.length === 20) {
+						page += 1;
+						r();
 					}
+					else {
+						cb(combined_followers);
+					}		
 				});
 			}
-			
-
-			cb();
+			r();
 		}
 	},
 	userStats: function(user, params, cb) {
