@@ -2,12 +2,13 @@
 
 ## 使用方法
 ###初始化
+推薦使用 Webpack ^^
 ```js
 var Be = require('beSimple.js');
 var be = new Be(YOUR_CLIENT_ID);
 ```
-### 使用者相關
-```
+### 使用者 User
+
 #### 取得使用者的基本資料
 ```js
 be.user(USER_ID, function(data) {
@@ -23,8 +24,8 @@ be.userProjects(USER_ID, function(data) {
 #### 取得使用者的所有追蹤者（Followers）
 請務必小心使用，如遇到 follower 超過 1000 的使用者，可能會使本 API 服務被 Behance 強制中斷。
 ```js
-be.userAllFollowers(USER_ID, function(data) {
-	console.log(data);
+be.userAllFollowers(USER_ID, function(followers) {
+	console.log(followers);
 })
 ```
 #### 取得使用者的社交統計資料

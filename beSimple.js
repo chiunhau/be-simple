@@ -37,7 +37,6 @@ Be.prototype = {
 			var suffix_url = 'users/' + user + '/followers';
 			var combined_followers = [];
 			var page = 1;
-			var shouldContinue = true;
 			var that = this;
 			
 			function r() {	
@@ -65,7 +64,6 @@ Be.prototype = {
 	_get: function(suffix_url, params, cb) {
 		params.client_id = this.client_id;
 		var url = this.base_url + suffix_url + paramsBuilder(params);
-		console.log(url);
 		$.ajax({
 			url: url,
 			dataType: 'jsonp',
