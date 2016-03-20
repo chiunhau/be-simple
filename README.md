@@ -1,7 +1,6 @@
 提供一套更適合懶人的 Behance API 介面懶人包。
 
-## Usage
-#### Initialize
+### Initialize
 First, you need to register your application at [Behance Dev](https://www.behance.net/dev/register), and store the client_id.
 
 ##### Installation
@@ -24,7 +23,9 @@ or another simple way
 	</script>
 </head>
 </html>
-### User
+```
+### Methods
+#### User Methods
 
 ##### Get a user's basic info
 ```js
