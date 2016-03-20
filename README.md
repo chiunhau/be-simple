@@ -1,34 +1,33 @@
 提供一套更適合懶人的 Behance API 介面懶人包。
 
-## 使用方法
-###初始化
-推薦使用 Webpack ^^
+## Usage
+### Initialize
 ```js
 var Be = require('beSimple.js');
 var be = new Be(YOUR_CLIENT_ID);
 ```
-### 使用者 User
+### User
 
-#### 取得使用者的基本資料
+#### Get a user's basic info
 ```js
 be.user(USER_ID, function(data) {
 	console.log(data);
 })
 ```
-#### 取得使用者的所有專案
+#### Get a user's projects
 ```js
 be.userProjects(USER_ID, function(data) {
 	console.log(data);
 })
 ```
-#### 取得使用者的所有追蹤者（Followers）
-請務必小心使用，如遇到 follower 超過 1000 的使用者，可能會使本 API 服務被 Behance 強制中斷。
+#### Get all followers of a user
+Please be careful when calling this method, if a user has more than 1000 followers, the request might be block by Behance.
 ```js
 be.userAllFollowers(USER_ID, function(followers) {
 	console.log(followers);
 })
 ```
-#### 取得使用者的社交統計資料
+#### Get a user's statics
 ```js
 be.userStats(USER_ID, function(data) {
 	console.log(data);
