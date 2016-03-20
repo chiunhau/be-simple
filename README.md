@@ -2,8 +2,13 @@
 
 ## Usage
 #### Initialize
+First install from NPM.
+```sh
+$ npm install be-simple --save
+```
+Require be-simple, get a client_id from [Behance Dev](https://www.behance.net/dev/register), and start EMPOWERING THE CREATIVE WORLD TO MAKE IDEAS HAPPEN.
 ```js
-var Be = require('beSimple.js');
+var Be = require('be-simple');
 var be = new Be(YOUR_CLIENT_ID);
 ```
 ### User
