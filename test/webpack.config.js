@@ -2,9 +2,9 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-	entry: './beSimple.webpack.js',
+	entry: './main.js',
 	output: { 
-		path: __dirname + '/build',
-		filename: 'beSimple.js'
+		path: __dirname,
+		filename: 'bundle.js'
 	}
 }
