@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Be"] = factory();
+	else
+		root["Be"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -44,39 +54,17 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Be = __webpack_require__(1);
+	'use strict';
 
-	var be = new Be("JEQi67TKrFJBglc988vISlUxkx9uvqh0");
+	var $ = __webpack_require__(1);
 
-	// be.user('chiunhauyou', function(data) {
-	// 	console.log(data);
-	// });
-
-	// be.userProjects('chiunhauyou', {}, function(data) {
-	// 	console.log(data);
-	// })
-
-	// be.userAppreciations('chiunhauyou', {}, function(data) {
-	// 	console.log(data);
-	// })
-
-	be.userAllFollowings('chiunhauyou', function(data) {
-		console.log(data);
-	})
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $ = __webpack_require__(2);
-
-	var Be = function(client_id) {
+	var Be = function (client_id) {
 		this.client_id = client_id;
 		this.base_url = 'http://www.behance.net/v2/';
-	}
+	};
 
 	Be.prototype = {
-		user: function(user, cb) {
+		user: function (user, cb) {
 			// if get both params, call /v2/users/user
 			var suffix_url = 'users/';
 			if (paramsValidator(user, 'string', cb, 'function')) {
@@ -84,76 +72,74 @@
 				this._get(suffix_url, {}, cb);
 			}
 		},
-		userProjects: function(user, params, cb) {
+		userProjects: function (user, params, cb) {
 			if (paramsValidator(user, 'string', params, 'object', cb, 'function')) {
 				var suffix_url = 'users/' + user + '/projects';
 				this._get(suffix_url, params, cb);
 			}
 		},
-		userAppreciations: function(user, params, cb) {
+		userAppreciations: function (user, params, cb) {
 			if (paramsValidator(user, 'string', params, 'object', cb, 'function')) {
 				var suffix_url = 'users/' + user + '/appreciations';
 				this._get(suffix_url, params, cb);
 			}
 		},
-		userFollowers: function(user, params, cb) {
+		userFollowers: function (user, params, cb) {
 			if (paramsValidator(user, 'string', params, 'object', cb, 'function')) {
 				var suffix_url = 'users/' + user + '/followers';
 				this._get(suffix_url, params, cb);
 			}
 		},
-		userAllFollowers: function(user, cb) {
+		userAllFollowers: function (user, cb) {
 			if (paramsValidator(user, 'string', cb, 'function')) {
 				var suffix_url = 'users/' + user + '/followers';
 				var combined_followers = [];
 				var page = 1;
 				var that = this;
-				
-				function r() {	
-					that._get(suffix_url, {per_page: 20, page: page}, function(data) {
+
+				function r() {
+					that._get(suffix_url, { per_page: 20, page: page }, function (data) {
 						combined_followers = combined_followers.concat(data.followers);
 						if (data.followers.length !== 0 && data.followers.length === 20) {
 							page += 1;
 							r();
-						}
-						else {
+						} else {
 							cb(combined_followers);
-						}		
+						}
 					});
 				}
 				r();
 			}
 		},
-		userAllFollowings: function(user, cb) {
+		userAllFollowings: function (user, cb) {
 			if (paramsValidator(user, 'string', cb, 'function')) {
 				var suffix_url = 'users/' + user + '/following';
 				var combined_followings = [];
 				var page = 1;
 				var that = this;
-				
-				function r() {	
-					that._get(suffix_url, {per_page: 20, page: page}, function(data) {
+
+				function r() {
+					that._get(suffix_url, { per_page: 20, page: page }, function (data) {
 						combined_followings = combined_followings.concat(data.following);
 						if (data.following.length !== 0 && data.following.length === 20) {
 							page += 1;
 							r();
-						}
-						else {
+						} else {
 							cb(combined_followings);
-						}		
+						}
 					});
 				}
 				r();
 			}
 		},
-		userStats: function(user, params, cb) {
+		userStats: function (user, params, cb) {
 			if (paramsValidator(user, 'string', params, 'object', cb, 'function')) {
 				var suffix_url = 'users/' + user + '/stats';
 
 				this._get(suffix_url, params, cb);
 			}
 		},
-		_get: function(suffix_url, params, cb) {
+		_get: function (suffix_url, params, cb) {
 			params.client_id = this.client_id;
 			var url = this.base_url + suffix_url + paramsBuilder(params);
 			$.ajax({
@@ -162,7 +148,7 @@
 				success: cb
 			});
 		}
-	}
+	};
 
 	function paramsBuilder(params) {
 		var str = '?';
@@ -171,24 +157,24 @@
 				str = str.concat(key).concat('=').concat(params[key]).concat('&');
 			}
 		}
-		
-		return str
+
+		return str;
 	}
 
 	function paramsValidator() {
 		var passed = true;
 		for (var i = 0; i < arguments.length; i += 2) {
 			if (typeof arguments[i] !== arguments[i + 1]) {
-				passed = false
+				passed = false;
 			}
 		}
-		return passed
+		return passed;
 	}
 
 	module.exports = Be;
 
 /***/ },
-/* 2 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10025,4 +10011,6 @@
 
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;

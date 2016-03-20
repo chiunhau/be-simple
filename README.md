@@ -2,15 +2,28 @@
 
 ## Usage
 #### Initialize
-First install from NPM.
+First, you need to register your application at [Behance Dev](https://www.behance.net/dev/register), and store the client_id.
+
+##### Installation
 ```sh
 $ npm install be-simple --save
 ```
-Register your application at [Behance Dev](https://www.behance.net/dev/register)
 ```js
 var Be = require('be-simple');
 var be = new Be(YOUR_CLIENT_ID);
+//done!
 ```
+or another simple way
+```html
+<html>
+<head>
+	<script src="/dist/be-simple.js"></script>
+	<script>
+		var be = new Be(YOUR_CLIENT_ID);
+		// done!
+	</script>
+</head>
+</html>
 ### User
 
 ##### Get a user's basic info

@@ -4,10 +4,13 @@
   "description": "A dead simple way to get access to Behance API",
   "main": "be-simple.js",
   "scripts": {
-    "test": "mocha"
+    "clean": "rimraf test",
+    "prepublish": "npm run clean",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack index.js dist/be-simple.js"
   },
   "keywords": [
-    "behance"
+    "behance",
+    "behance api"
   ],
   "author": "Chiun Hau You",
   "license": "MIT",
@@ -19,6 +22,12 @@
     "url": "https://github.com/chiunhau/be-simple"
   },
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.7.0",
+    "cross-env": "^1.0.7",
     "webpack": "^1.12.14"
   }
 }
