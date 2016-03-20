@@ -48,9 +48,9 @@
 
 	var be = new Be("JEQi67TKrFJBglc988vISlUxkx9uvqh0");
 
-	be.user('chiunhauyou', function(data) {
-		console.log(data);
-	});
+	// be.user('chiunhauyou', function(data) {
+	// 	console.log(data);
+	// });
 
 	// be.userProjects('chiunhauyou', {}, function(data) {
 	// 	console.log(data);
@@ -60,9 +60,9 @@
 	// 	console.log(data);
 	// })
 
-	// be.userAllFollowers('apsu', function(data) {
-	// 	console.log(data);
-	// })
+	be.userAllFollowings('chiunhauyou', function(data) {
+		console.log(data);
+	})
 
 /***/ },
 /* 1 */
@@ -118,6 +118,28 @@
 						}
 						else {
 							cb(combined_followers);
+						}		
+					});
+				}
+				r();
+			}
+		},
+		userAllFollowings: function(user, cb) {
+			if (paramsValidator(user, 'string', cb, 'function')) {
+				var suffix_url = 'users/' + user + '/following';
+				var combined_followings = [];
+				var page = 1;
+				var that = this;
+				
+				function r() {	
+					that._get(suffix_url, {per_page: 20, page: page}, function(data) {
+						combined_followings = combined_followings.concat(data.following);
+						if (data.following.length !== 0 && data.following.length === 20) {
+							page += 1;
+							r();
+						}
+						else {
+							cb(combined_followings);
 						}		
 					});
 				}

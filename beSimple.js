@@ -54,6 +54,28 @@ Be.prototype = {
 			r();
 		}
 	},
+	userAllFollowings: function(user, cb) {
+		if (paramsValidator(user, 'string', cb, 'function')) {
+			var suffix_url = 'users/' + user + '/following';
+			var combined_followings = [];
+			var page = 1;
+			var that = this;
+			
+			function r() {	
+				that._get(suffix_url, {per_page: 20, page: page}, function(data) {
+					combined_followings = combined_followings.concat(data.following);
+					if (data.following.length !== 0 && data.following.length === 20) {
+						page += 1;
+						r();
+					}
+					else {
+						cb(combined_followings);
+					}		
+				});
+			}
+			r();
+		}
+	},
 	userStats: function(user, params, cb) {
 		if (paramsValidator(user, 'string', params, 'object', cb, 'function')) {
 			var suffix_url = 'users/' + user + '/stats';
