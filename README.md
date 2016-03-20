@@ -6,7 +6,7 @@ First install from NPM.
 ```sh
 $ npm install be-simple --save
 ```
-Require be-simple, get a client_id from [Behance Dev](https://www.behance.net/dev/register), and start EMPOWERING THE CREATIVE WORLD TO MAKE IDEAS HAPPEN.
+Register your application at [Behance Dev](https://www.behance.net/dev/register)
 ```js
 var Be = require('be-simple');
 var be = new Be(YOUR_CLIENT_ID);
@@ -28,7 +28,7 @@ be.userProjects(USER_ID, function(data) {
 ```
 
 ##### Get all followers of a user
-Please be careful when calling this method, if a user has more than 1000 followers, the request might be block by Behance.
+Please be careful when calling this method.
 ```js
 be.userAllFollowers(USER_ID, function(followers) {
 	console.log(followers);
@@ -36,7 +36,7 @@ be.userAllFollowers(USER_ID, function(followers) {
 ```
 
 ##### Get all followings of a user
-Please be careful when calling this method, if a user has more than 1000 followings, the request might be block by Behance.
+Please be careful when calling this method.
 ```js
 be.userAllFollowings(USER_ID, function(followings) {
 	console.log(followers);
