@@ -1,16 +1,22 @@
 {
-  "name": "beSimple.js",
+  "name": "be-simple",
   "version": "0.5.0",
-  "description": "A dead simple way to access behance js api",
-  "main": "beSimple.js",
-  "scripts": {},
+  "description": "A dead simple way to get access to Behance API",
+  "main": "be-simple.js",
+  "scripts": {
+    "test": "mocha"
+    },
   "keywords": [
     "behance"
   ],
-  "author": "chiunhau you",
+  "author": "Chiun Hau You",
   "license": "MIT",
   "dependencies": {
     "jquery": "^2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chiunhau/be-simple"
   },
   "devDependencies": {
     "webpack": "^1.12.14"

@@ -1,19 +1,9 @@
-var Be = require('../beSimple.js');
-
-var be = new Be("JEQi67TKrFJBglc988vISlUxkx9uvqh0");
-
-// be.user('chiunhauyou', function(data) {
-// 	console.log(data);
-// });
-
-// be.userProjects('chiunhauyou', {}, function(data) {
-// 	console.log(data);
-// })
-
-// be.userAppreciations('chiunhauyou', {}, function(data) {
-// 	console.log(data);
-// })
-
-be.userAllFollowings('chiunhauyou', function(data) {
-	console.log(data);
-})
+var assert = require('assert');
+describe('Array', function() {
+  describe('#indexOf()', function () {
+    it('should return -1 when the value is not present', function () {
+      assert.equal(-1, [1,2,3].indexOf(5));
+      assert.equal(-1, [1,2,3].indexOf(0));
+    });
+  });
+});
