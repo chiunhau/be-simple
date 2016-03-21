@@ -1,18 +1,25 @@
-'use strict';
-
 var webpack = require('webpack')
 
 var env = process.env.NODE_ENV
 var config = {
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+      { test: /\.js$/, 
+        loaders: ['babel-loader'], 
+        exclude: /node_modules/ 
+      }
     ]
   },
   output: {
     library: 'Be',
     libraryTarget: 'umd'
-  }
+  },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env)
+    })
+  ]
 };
 
 if (env === 'production') {

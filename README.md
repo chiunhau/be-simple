@@ -4,6 +4,7 @@
 First, you need to register your application at [Behance Dev](https://www.behance.net/dev/register), and store the client_id.
 
 ##### Installation
+With [NPM](https://www.npmjs.com/package/be-simple):
 ```sh
 $ npm install be-simple --save
 ```
@@ -12,7 +13,7 @@ var Be = require('be-simple');
 var be = new Be(YOUR_CLIENT_ID);
 //done!
 ```
-or another simple way
+Or another simple way:
 ```html
 <html>
 <head>
