@@ -64,3 +64,7 @@ be.userStats(USER_ID, function(data) {
 	console.log(data);
 })
 ```
+
+### Next Step
+- Add project related methods
+- Remove jQuery dependency 
